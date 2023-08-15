@@ -138,7 +138,7 @@ public class LSPAnnotator extends ExternalAnnotator<Object, Object> {
             if (annotation.getQuickFixes() == null || annotation.getQuickFixes().isEmpty()) {
                 return;
             }
-            AnnotationBuilder builder = holder.newAnnotation(annotation.getSeverity(), annotation.getMessage());
+            AnnotationBuilder builder = holder.newAnnotation(annotation.getSeverity(), annotation.getMessage()).range(annotation.textRange);
             for (Annotation.QuickFixInfo quickFixInfo : annotation.getQuickFixes()) {
                 builder = builder.withFix(quickFixInfo.quickFix);
             }
